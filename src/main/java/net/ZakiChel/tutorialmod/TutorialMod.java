@@ -1,5 +1,6 @@
 package net.ZakiChel.tutorialmod;
 
+        import net.ZakiChel.tutorialmod.item.ModItems;
         import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,8 +32,8 @@ public class TutorialMod
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addListener(this::setup);
 
+        ModItems.register(eventBus);
 
-        // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }
 
