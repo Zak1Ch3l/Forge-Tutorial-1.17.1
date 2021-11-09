@@ -7,10 +7,10 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:titanium_ingot"
+      "item": "tutorialmod:titanium_ingot"
     }
   },
   "result": {
-    "item": "minecraft:titanium_block"
+    "item": "tutorialmod:titanium_block"
   }
 }

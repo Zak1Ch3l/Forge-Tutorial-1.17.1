@@ -1,6 +1,7 @@
 package net.ZakiChel.tutorialmod.block;
 
 import net.ZakiChel.tutorialmod.TutorialMod;
+import net.ZakiChel.tutorialmod.item.ModCreativeModeTab;
 import net.ZakiChel.tutorialmod.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -27,6 +28,17 @@ public class ModBlocks {
 
 
 
+    private static<T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block,CreativeModeTab tab) {
+        RegistryObject<T> toReturn = BLOCKS.register(name, block);
+        registerBlockItem(name, toReturn);
+        return toReturn;
+    }
+
+    private static<T extends Block> Void registerBlockItem(String name, RegistryObject<T> block,CreativeModeTab tab){
+        ModItems.ITEMS.register(name,() -> new BlockItem(block.get(),
+                new Item.Properties().tab(ModCreativeModeTab.TUTORIAL_TAB)));
+            return null;
+    }
     private static<T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
@@ -35,8 +47,8 @@ public class ModBlocks {
 
     private static<T extends Block> Void registerBlockItem(String name, RegistryObject<T> block){
         ModItems.ITEMS.register(name,() -> new BlockItem(block.get(),
-                new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
-            return null;
+                new Item.Properties().tab(ModCreativeModeTab.TUTORIAL_TAB)));
+        return null;
     }
 
     public static void register(IEventBus eventBus){
